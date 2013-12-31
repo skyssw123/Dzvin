@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <?php echo $this->translate('Notification') ?> #<?php echo $this->notification->id ?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <label class="limited"><?php echo $this->translate('Parse Object ID') ?></label>
+                    <?php echo $this->notification->objectId ?>
+                </p>
+                <p>
+                    <label class="limited"><?php echo $this->translate('Short message') ?></label>
+                    <?php echo $this->notification->pushText ?>
+                </p>
+            <?php if (!$this->notification->isSimple) { ?>
+                <p>
+                    <label class="limited"><?php echo $this->translate('Full message') ?></label>
+                    <?php echo $this->notification->fullText ?>
+                </p>
+                <p>
+                    <label class="limited"><?php echo $this->translate('Start date') ?></label>
+                    <?php echo $this->notification->startDate ?>
+                </p>
+                <p>
+                    <label class="limited"><?php echo $this->translate('End date') ?></label>
+                    <?php echo $this->notification->endDate ?>
+                </p>
+                <p>
+                    <label class="limited"><?php echo $this->translate('Rank') ?></label>
+                    <span style="color: <?php switch ($this->notification->rank) {
+                        case 3: echo 'red'; break;
+                        case 2: echo 'yellow'; break;
+                        case 1: echo 'green'; break;
+                    } ?>;"><?php switch ($this->notification->rank) {
+                        case 3: echo 'red'; break;
+                        case 2: echo 'yellow'; break;
+                        case 1: echo 'green'; break;
+                    } ?></span>
+                </p>
+                <?php if ($this->notification->points) { ?>
+                <p>
+                    <label class="limited"><?php echo $this->translate('Points on the map'); ?></label><br />
+                    <?php
+                    $points = json_decode($this->notification->points);
+                    foreach ($points as $i => $point) {
+                        echo ($i + 1) . ') ' . $point->title . '<br />' . $point->lat . ', ' . $point->lon . '<br />';
+                    }
+                    ?>
+                </p>
+                <?php } ?>
+            <?php } ?>
+                <p>
+                    <a class="btn btn-success pull-right" href="<?php echo $this->url('home') ?>">
+                        <?php echo $this->translate('Go back') ?>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

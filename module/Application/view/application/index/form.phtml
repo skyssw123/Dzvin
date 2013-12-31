@@ -1,0 +1,88 @@
+<script type="text/javascript" src="/js/index/form.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3HI0bdDrszKnfdsDx9KyIeB0Lq5CY4Z0&sensor=true"></script>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Push Notification') ?></h3>
+            </div>
+            <div class="panel-body">
+                <form id="pushForm" method="post" action="/application/index/push">
+                    <input type="hidden" name="points" value="" />
+                    <p>
+                        <label class="limited"><?php echo $this->translate('Short message') ?></label>
+                        <input type="text" name="pushText" value="" maxlength="50" size="20" />
+                    </p>
+                    <p>
+                        <label class="limited"><?php echo $this->translate('Simple notification') ?></label>
+                        <input type="radio" name="isSimple" value="1" id="isSimple1" checked />
+                        <label for="isSimple1">yes</label>
+                        &nbsp;&nbsp;
+                        <input type="radio" name="isSimple" value="0" id="isSimple0" />
+                        <label for="isSimple0">no</label>
+                    </p>
+                    <p class="extended">
+                        <label class="limited"><?php echo $this->translate('Use points on the map?') ?></label>
+                        <input type="radio" name="useGeo" value="0" id="useGeo1" checked />
+                        <label for="useGeo1">no</label>
+                        &nbsp;&nbsp;
+                        <input type="radio" name="useGeo" value="1" id="useGeo0" />
+                        <label for="useGeo0">yes</label>
+                    </p>
+                    <p class="extended">
+                        <label class="limited"><?php echo $this->translate('Full message text') ?></label><br />
+                        <textarea name="fullText" class="simpleTextArea"></textarea>
+                    </p>
+                    <p class="extended">
+                        <label class="limited"><?php echo $this->translate('Start datetime') ?></label>
+                        <input type="text" name="startDate" />
+                        <a href="javascript:void(0);" id="resetDateStart">reset</a>
+                    </p>
+                    <p class="extended">
+                        <label class="limited"><?php echo $this->translate('End datetime') ?></label>
+                        <input type="text" name="endDate" />
+                        <a href="javascript:void(0);" id="resetDateEnd">reset</a>
+                    </p>
+                    <p class="extended">
+                        <label class="limited"><?php echo $this->translate('Rank') ?></label>
+                        <span id="ranking">
+                            <input type="radio" name="rank" value="3" id="rank1" checked/>
+                            <label for="rank1" style="color: red;">red</label><br />
+                            <input type="radio" name="rank" value="2" id="rank2"/>
+                            <label for="rank2" style="color: #ffff00;">yellow</label><br />
+                            <input type="radio" name="rank" value="1" id="rank3"/>
+                            <label for="rank3" style="color: green;">green</label>
+                        </span>
+                    </p>
+                    <p>
+                        <a class="btn btn-success pull-right" href="javascript:void(0);" id="pushNotificationID">
+                            <?php echo $this->translate('Push Notification') ?>
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="geo" class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Geolocation') ?></h3>
+            </div>
+            <div class="panel-body">
+                <div id="notification_map"></div>
+                <table id="notification_points">
+                    <tr>
+                        <th class="lat">Latitude</th>
+                        <th class="lon">Longitude</th>
+                        <th class="title">Title</th>
+                        <th class="del"></th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Double click on title to edit.</td>
+                    </tr>
+                </table>
+                <div class="notice"><?php echo $this->translate('Double click on the map to add point') ?></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Dzvin'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/black-tie/jquery-ui.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/jquery.datetimepicker.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+        <script src="/js/jquery.ui.core.js"></script>
+        <script src="/js/jquery.ui.widget.js"></script>
+        <script src="/js/jquery.ui.tabs.js"></script>
+        <script src="/js/jquery.ui.mouse.js"></script>
+        <script src="/js/jquery.ui.sortable.js"></script>
+        <script src="/js/jquery.ui.dialog.js"></script>
+        <script src="/js/jquery.ui.draggable.js"></script>
+        <script src="/js/jquery.ui.droppable.js"></script>
+        <script src="/js/jquery.ui.position.js"></script>
+        <script src="/js/jquery.ui.slider.js"></script>
+        <script src="/js/jquery.datetimepicker.js"></script>
+        <script src="/js/jquery.validate.min.js"></script>
+        <script src="/js/jquery.json.min.js"></script>
+        <script src="/js/helpers.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>">
+                        <img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" height="22" alt="Zend Framework 2"/>&nbsp;
+                        <?php echo $this->translate('Dzvin') ?>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="<?php if ($_SERVER['REQUEST_URI'] == '/') echo 'active' ?>">
+                            <a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a>
+                        </li>
+                        <li class="<?php if (strpos($_SERVER['REQUEST_URI'], 'form')) echo 'active' ?>">
+                            <a href="<?php echo $this->url('form') ?>"><?php echo $this->translate('Push Message') ?></a>
+                        </li>
+                        <?php
+                        if ($this->sm->get('AuthService')->hasIdentity()) {
+                        ?><li>
+                            <a href="<?php echo $this->url('login/process', array('action'=>'logout')); ?>">
+                                <?php echo $this->translate('Logout') ?>
+                            </a>
+                        </li><?php } ?>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; <?php echo date('Y') ?> by Svitla Systems. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+        <div id="loadingMessage">
+            <img src="/img/ajax-loader.gif">
+        </div>
+    </body>
+</html>

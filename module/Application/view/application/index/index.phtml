@@ -1,0 +1,18 @@
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ObjectID</th>
+        <th>Message</th>
+        <th>Is Simple?</th>
+        <th>With GEO?</th>
+    </tr>
+<?php foreach ($this->list as $notification) { ?>
+    <tr>
+        <td><a href="/show/<?php echo $notification->id ?>"><?php echo $notification->id ?></a></td>
+        <td><?php echo $notification->objectId ?></td>
+        <td><a href="/show/<?php echo $notification->id ?>"><?php echo $notification->pushText ?></a></td>
+        <td><?php echo $notification->isSimple ? 'yes' : 'no' ?></td>
+        <td><?php echo $notification->points ? 'yes' : 'no' ?></td>
+    </tr>
+<?php } ?>
+</table>

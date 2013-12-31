@@ -1,0 +1,114 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+#loadingMessage {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    background-color: #dddddd;
+    background-color: rgba(35, 35, 35, 0.3);
+}
+.simpleTextArea {
+    width: 100%;
+}
+label.limited {
+    width: 140px;
+    vertical-align: top;
+}
+.extended {
+    display: none;
+}
+input[type=text], textarea {
+    border: 1px solid #666666;
+}
+input[name=startDate], input[name=endDate] {
+    width: 120px;
+}
+#ranking {
+    display: inline-block;
+    width: 120px;
+}
+#notification_map {
+    border: 1px solid #dddddd;
+    width: 415px;
+    height: 384px;
+    float: left;
+}
+#notification_points {
+    border: 1px solid #dddddd;
+    border-bottom: 0;
+    border-right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 300px;
+    float: right;
+}
+#notification_points tr, #notification_points th {
+    border-bottom: 1px solid #dddddd;
+}
+#geo {
+    display: none;
+    vertical-align: top;
+}
+.notice {
+    width: 100%;
+    clear: both;
+}
+#notification_points td, #notification_points th {
+    border-right: 1px solid #dddddd;
+    font-weight: normal;
+}
+#notification_points th {
+    text-align: center;
+    background-color: #dddddd;
+}
+#notification_points .lat {
+    width: 50px;
+    overflow: hidden;
+}
+#notification_points .lon {
+    width: 50px;
+    overflow: hidden;
+}
+#notification_points .title {
+    width: 75px;
+}
+#notification_points .del {
+    width: 25px;
+}
